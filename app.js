@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://root:root@cluster0.gztjryb.mongodb.net/todolistDB", { useNewUrlParser: true });
 
 const itemSchema = {
     name: String
@@ -123,6 +123,6 @@ app.post("/delete", function (req, res) {
     }
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("Server running...");
 });
