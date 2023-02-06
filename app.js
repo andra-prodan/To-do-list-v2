@@ -5,7 +5,7 @@ const https = require("https");
 const date = require(__dirname + "/date.js");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-const process = require('dotenv').config();
+require('dotenv').config();
 
 
 mongoose.set("strictQuery", false);
