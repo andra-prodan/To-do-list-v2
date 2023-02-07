@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-mongoose.connect("MongoDB/todolistDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://MongoDB/todolistDB", { useNewUrlParser: true });
 
 const itemSchema = {
     name: String
