@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
-mongoose.connect("mongodb+srv://root:root@cluster0.gztjryb.mongodb.net/todolistDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://root:root@cluster0.gztjryb.mongodb.net/todolistDB", { useNewUrlParser: true});
 
 const itemSchema = {
     name: String
@@ -41,11 +41,9 @@ const item3 = new Item({
 });
 
 const defaultItems = [item1, item2, item3];
-var todayDate = date.getDate();
+var todayDate = "Today";
 
 app.get("/", function (req, res) {
-
-
 
     Item.find({}, function (err, items) {
         if (items.length === 0) {
@@ -89,9 +87,8 @@ app.get("/:customList", function (req, res) {
 app.post("/add", function (req, res) {
     const newItem = new Item({ name: req.body.newItemAdd });
     const listName = req.body.list;
-    var todayDate2 = todayDate.substring(0, 7);
 
-    if (listName == todayDate2) {
+    if (listName == todayDate) {
         newItem.save();
         res.redirect("/");
     } else {
